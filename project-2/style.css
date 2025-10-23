@@ -1,5 +1,5 @@
 body {
-  background-image: url("assets/sky.gif");
+  background-image: url("assets/IPadWallpaper2.jpg");
   background-size: cover;
   height: 100vh;
 }
@@ -28,12 +28,30 @@ p:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 25%;
+  /* border: 2px white solid; */
 }
 
-h1,
-a {
-  animation: coolAnimation 3s infinite;
+.blur {
+filter: blur(5px);
+
 }
+
+.blur:hover{
+filter: blur(0px);
+/* transition: 1s ease-in; */
+
+
+}
+
+a {
+  color: rgb(40, 115, 40);
+}
+
+a:hover {
+color: white;
+}
+
 
 #p1 {
   animation: coolAnimation 5s infinite;
