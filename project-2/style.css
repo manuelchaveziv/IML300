@@ -1,18 +1,24 @@
-@font-face {
-  font-family: 'BebasNeue';
-  src: url(fonts/BebasNeue-Regular.ttf) format('truetype');
-    }
+ a {
+        text-decoration: none; /* removes underline */
+ }
 
 body {
   background-color: #0f0f0f;
-  font-family: BebasNeue, sans-serif;
 }
 
-h1 { 
-  font-size: 6em; 
-  font-family: 'BebasNeue', sans-serif;
+h1 {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 11em;
+}
 
-
+h2{
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 5em;
+  
 }
 
 img {
@@ -39,7 +45,7 @@ p:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 25%;
+  margin-top: 10%;
   /* border: 2px white solid; */
 }
 
