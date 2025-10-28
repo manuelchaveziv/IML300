@@ -63,19 +63,13 @@ p{
   
 }
 
-.bluepill {
+.blue {
   color: rgb(0, 38, 255);
   text-decoration: none; /* removes underline */
-  
+
 }
 
-.redpill {
-  color: rgba(255, 0, 0, 0.935);
-  text-decoration: none; /* removes underline */
-  
-}
-
-.redpill {
+.red {
   color: rgba(255, 0, 0, 0.935);
   text-decoration: none; /* removes underline */
   
@@ -150,3 +144,29 @@ color: rgb(0, 0, 0)
   top: 230px;
   left: 80px;
 }
+
+.potential {
+  position: relative;
+  top: 350px;
+  left: -15px;
+}
+
+.yes {
+  position: relative;
+  top: 368px;
+  left: -15px;
+}
+
+.no {
+  position: relative;
+  top: 375px;
+  left: -15px;
+}
+
+.nospoon {
+  position: relative;
+  top: 260px;
+  left: -15px;
+}
+
+

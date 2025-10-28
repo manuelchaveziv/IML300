@@ -12,12 +12,36 @@
       
     />
 
+     <!-- Add p5.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/addons/p5.sound.min.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+    
+    <style>
+      /* Position p5 canvas in background */
+      canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+      
+      /* Make sure body doesn't have margin that affects positioning */
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+
     <link rel="stylesheet" href="style.css" />
     
 
   </head >
   <body>
       <h1 class="specialCenter glow"><a href="redorblue.html">METAMORPHOSIS</a></h1>
+
+     <script src="mousemove.js"></script>
   
   </body>
 </html>
