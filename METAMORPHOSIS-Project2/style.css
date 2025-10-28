@@ -1,5 +1,5 @@
  a {
-        text-decoration: none; /* removes underline */
+        text-decoration: none; 
  }
 
 body {
@@ -38,7 +38,7 @@ h1.specialCenter {
   flex-direction: column;
   align-items: center;
   margin-top: 20%;
-  /* border: 2px white solid; */
+  
 }
 
 h2{
@@ -59,45 +59,45 @@ p{
 
 .back {
   color: rgb(0, 143, 17);
-  text-decoration: none; /* removes underline */
+  text-decoration: none;
   
 }
 
 .blue {
   color: rgb(0, 38, 255);
-  text-decoration: none; /* removes underline */
+  text-decoration: none;
 
 }
 
 .red {
   color: rgba(255, 0, 0, 0.935);
-  text-decoration: none; /* removes underline */
+  text-decoration: none; 
   
 }
 
 .spaced-text {
-  line-height: 3; /* or 200%, or 32px */
+  line-height: 3; 
 }
 
 .move-text {
-  position: absolute;   /* take it out of normal flow */
-  top: 275px;           /* distance from top */
-  left: 290px;          /* distance from left */
+  position: absolute;   
+  top: 275px;           
+  left: 290px;          
 }
 
 
 .center-screen {
   display: flex;
-  justify-content: center; /* centers left-right */
-  align-items: center;     /* centers top-bottom */
-  height: 100vh;           /* full viewport height */
-  text-align: center;      /* centers text inside */
+  justify-content: center; 
+  align-items: center;     
+  height: 100vh;          
+  text-align: center;      
 }
 
 
 .blur:hover{
 filter: blur(0px);
-/* transition: 1s ease-in; */
+
 
 }
 
@@ -112,18 +112,18 @@ color: rgb(0, 0, 0)
 }
 
 .fade-in {
-  opacity: 0;                        /* start invisible */
-  animation: fadeIn 3s ease-in forwards; /* run the fade */
+  opacity: 0;                       
+  animation: fadeIn 3s ease-in forwards; 
 }
 
-/* define the animation steps */
+
 @keyframes fadeIn {
-  from { opacity: 0; }               /* start transparent */
-  to { opacity: 1; }                 /* end visible */
+  from { opacity: 0; }               
+  to { opacity: 1; }               
 }
 
 .container {
-  position: relative; /* Creates positioning context */
+  position: relative; 
   height: 500px;
 }
 
