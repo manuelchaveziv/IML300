@@ -57,21 +57,16 @@ p{
   font-style: normal;
   font-size: 1em;
 
-  .box {
-    position: relative;
-    height: 500px;
-     }
-
-   .text {
-     position: absolute;
-     top: 10px;     /* distance from the top */
-    left: 100px;   /* distance from the left */
-   }
+   .move {
+  position: sticky;   /* or relative, fixed, sticky */
+  top: 50px;            /* distance from the top */
+  left: 100px;          /* distance from the left */
+}
 
 }
 
  
-.specialCenter {
+h1.specialCenter {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,6 +87,7 @@ filter: blur(0px);
 
 a {
   color: rgb(255, 0, 0);
+  
 }
 
 a:hover {
