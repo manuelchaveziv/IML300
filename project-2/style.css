@@ -13,8 +13,8 @@ h1 {
   font-size: 11em;
 
   color: white;
-  text-shadow: 0 0 10px #ff0000;
-  animation: glow 5s infinite alternate;
+  text-shadow: 0 0 40px #ff0000;
+  animation: glow 8s infinite alternate;
 }
 
 @keyframes glow {
@@ -22,7 +22,7 @@ h1 {
     text-shadow: 0 0 2px #ff0000;
   }
   to {
-    text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000;
+    text-shadow: 0 0 40px #ff0000, 0 0 40px #ff0000;
   }
 }
 
@@ -57,12 +57,12 @@ p{
   font-style: normal;
   font-size: 1em;
 
-   .move {
-  position: sticky;   /* or relative, fixed, sticky */
-  top: 50px;            /* distance from the top */
-  left: 100px;          /* distance from the left */
 }
 
+.move {
+  position: relative;   /* or relative, fixed, sticky */
+  top: 50px;            /* distance from the top */
+  left: 100px;          /* distance from the left */
 }
 
  
@@ -70,7 +70,7 @@ h1.specialCenter {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 10%;
+  margin-top: 20%;
   /* border: 2px white solid; */
 }
 
