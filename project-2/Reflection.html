@@ -1,21 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>METAMORPHISIS</title>
+
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #000;
+    }
     
+    #video {
+      width: 400px;
+      height: 400px;
+      object-fit: cover;
+      transform: scaleX(-1);
+      
+      /* Green tint */
+      filter: grayscale(100%) sepia(100%) hue-rotate(50deg) saturate(400%);
+
+      
+      /* Custom shapes - choose one: */
+      
+      /* Circle */
+      border-radius: 50% / 90%;
+      
+      /* Rounded rectangle */
+      /* border-radius: 30px; */
+      
+      /* Hexagon (needs clip-path) */
+      /* clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); */
+      
+      /* Heart shape */
+      /* clip-path: path('M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z'); */
+      
+      /* Star */
+      /* clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); */
+      
+      box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+
+        /* Fade in effect */
+      opacity: 0;
+      animation: fadeIn 5s ease-in forwards;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet"
     />
+
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    
-    <p>  This is your last chance. </p>
+    <video id="video" autoplay playsinline></video>
 
+  <script>
+    const video = document.getElementById('video');
 
+    navigator.mediaDevices.getUserMedia({ 
+      video: { facingMode: 'user' } 
+    })
+    .then(stream => {
+      video.srcObject = stream;
+    })
+    .catch(error => {
+      console.error('Camera access denied:', error);
+    });
+  </script>
   </body>
+    
+    <p> 
+      
+     <div class="container">
+     <p class="fade-in whosee">Who do you see?</p>
+
+
 </html>
