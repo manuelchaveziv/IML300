@@ -10,12 +10,12 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
     
-   <link rel="stylesheet" href="Project3.css" />
-
+    <link rel="stylesheet" href="Project3.css" />
+   
 </head>
 <body>
     <!-- NAVIGATION -->
-     <nav>
+  <nav>
         <ul>
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="stories.html">Stories</a></li>
@@ -24,10 +24,9 @@
             <li><a href="about.html">About</a></li>
         </ul>
     </nav>
-
     <!-- HEADER -->
     <header>
-        <h1>Submit Your Story</h1>
+        <h1>Share Your Story</h1>
     </header>
 
     <!-- MAIN CONTENT -->
@@ -58,21 +57,6 @@
             </div>
 
             <div class="form-group">
-                <label for="region">Region of Origin *</label>
-                <select id="region" name="region" required>
-                    <option value="">-- Select Region --</option>
-                    <option value="asia">Asia</option>
-                    <option value="europe">Europe</option>
-                    <option value="latin-america">Latin America</option>
-                    <option value="africa">Africa</option>
-                    <option value="middle-east">Middle East</option>
-                    <option value="caribbean">Caribbean</option>
-                    <option value="other">Other</option>
-                </select>
-                <span class="error-message" id="regionError">Please select a region</span>
-            </div>
-
-            <div class="form-group">
                 <label for="country">Country of Origin</label>
                 <input type="text" id="country" name="country">
             </div>
@@ -85,32 +69,28 @@
 
             <div class="form-group">
                 <label for="videoLink">Video Link (Optional)</label>
-                <input type="text" id="videoLink" name="videoLink">
+                <input type="text" id="videoLink" name="videoLink" >
             </div>
 
             <button type="submit" class="submit-btn">Submit Your Story</button>
         </form>
     </main>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2024 Legacy of Resilience | A Networked Care Project</p>
-    </footer>
-
     <!-- JQUERY FORM VALIDATION -->
     <script>
         // FIREBASE CONFIGURATION
         // TODO: Replace this with your own Firebase config from Firebase Console
-       const firebaseConfig = {
-  apiKey: "AIzaSyDMr7mtdM69OJFaROO6zUYj0YaysibP2E4",
-  authDomain: "project3-legacy.firebaseapp.com",
-  databaseURL: "https://project3-legacy-default-rtdb.firebaseio.com",
-  projectId: "project3-legacy",
-  storageBucket: "project3-legacy.firebasestorage.app",
-  messagingSenderId: "805209453944",
-  appId: "1:805209453944:web:50537951ee7335f4ad448d",
-  measurementId: "G-N3PK0JE775"
-};
+         const firebaseConfig = {
+         apiKey: "AIzaSyDMr7mtdM69OJFaROO6zUYj0YaysibP2E4",
+        authDomain: "project3-legacy.firebaseapp.com",
+        databaseURL: "https://project3-legacy-default-rtdb.firebaseio.com",
+        projectId: "project3-legacy",
+         storageBucket: "project3-legacy.firebasestorage.app",
+        messagingSenderId: "805209453944",
+         appId: "1:805209453944:web:50537951ee7335f4ad448d",
+        measurementId: "G-N3PK0JE775"
+}       ;
+
 
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
@@ -140,14 +120,9 @@
                 
                 var isValid = true;
                 
-                // Validate all fields
+                // Validate required fields
                 if ($('#name').val().trim() === '') {
                     $('#nameError').fadeIn();
-                    isValid = false;
-                }
-                
-                if ($('#region').val() === '') {
-                    $('#regionError').fadeIn();
                     isValid = false;
                 }
                 
@@ -164,7 +139,6 @@
                     var storyData = {
                         name: $('#name').val().trim(),
                         ancestorName: $('#ancestorName').val().trim(),
-                        region: $('#region').val(),
                         country: $('#country').val().trim(),
                         story: $('#story').val().trim(),
                         videoLink: $('#videoLink').val().trim(),
