@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Legacy of Resilience</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+        <link rel="stylesheet" href="Project3.css" />
+
+   
+</head>
+<body>
+    <!-- Nav -->
+     <nav>
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="stories.html">Stories</a></li>
+            <li><a href="submitstory.html">Share Your Story</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- HEADER -->
+    <header>
+        <h1> Celebrating the resilience, sacrifice, and enduring strength <br> 
+            that flows through generations</h1>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <div class="content-section slide-in">
+            <div class="mission-box">
+                To honor and amplify the voices of immigrant descendants, celebrating the 
+                resilience, sacrifice, and enduring strength that flows through generations.
+            </div>
+        </div>
+
+    </main>
+
+    <!-- JQUERY INTERACTIVITY -->
+    <script>
+        $(document).ready(function() {
+            // Slide in sections on scroll
+            function checkSlide() {
+                $('.slide-in').each(function() {
+                    var slideInAt = $(window).scrollTop() + $(window).height() - 100;
+                    var elementBottom = $(this).offset().top + $(this).outerHeight();
+                    var isHalfShown = slideInAt > $(this).offset().top;
+                    
+                    if (isHalfShown && !$(this).hasClass('visible')) {
+                        $(this).addClass('visible');
+                    }
+                });
+            }
+            
+            // Add CSS for slide-in animation
+            $('<style>')
+                .prop('type', 'text/css')
+                .html(`
+                    .slide-in {
+                        opacity: 0;
+                        transform: translateY(30px);
+                        transition: all 0.8s ease;
+                    }
+                    .slide-in.visible {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                `)
+                .appendTo('head');
+            
+            checkSlide();
+            $(window).on('scroll', checkSlide);
+        });
+    </script>
+</body>
+</html>

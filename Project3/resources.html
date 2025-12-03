@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - Legacy of Resilience</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <link rel="stylesheet" href="Project3.css" />
+   
+</head>
+<body>
+    <!-- Nav -->
+   <nav>
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="stories.html">Stories</a></li>
+            <li><a href="submitstory.html">Share Your Story</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <h1>Resources</h1>
+        <p>Tools and information for exploring your immigrant heritage</p>
+    </header>
+
+    <!-- Content -->
+    <main>
+
+        <!-- EDUCATIONAL RESOURCES -->
+        <div class="resource-section">
+            <h2>Educational Organizations</h2>
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h3>Immigration History Research Center</h3>
+                    <p>Archives and research dedicated to American immigration and ethnic history.</p>
+                    <a href="https://cla.umn.edu/ihrc" target="_blank">Visit Site →</a>
+                </div>
+                <div class="resource-card">
+                    <h3>National Immigration Forum</h3>
+                    <p>Advocacy and educational resources about immigration policy and reform.</p>
+                    <a href="https://forumtogether.org" target="_blank">Visit Site →</a>
+
+                </div>
+                <div class="resource-card">
+                    <h3>Migration Policy Institute</h3>
+                    <p>Independent research on migration and refugee policies worldwide.</p>
+                   <a href="https://www.migrationpolicy.org" target="_blank">Visit Site →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- CULTURAL ORGANIZATIONS -->
+        <div class="resource-section">
+            <h2>Cultural Heritage Organizations</h2>
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h3>Asian American Writers' Workshop</h3>
+                    <p>Supporting Asian American voices and stories through literature and community.</p>
+                    <a href="https://aaww.org" target="_blank">Visit Site →</a>
+                </div>
+                <div class="resource-card">
+                    <h3>National Museum of African American History</h3>
+                    <p>Exploring African American history, culture, and the immigrant experience.</p>
+                    <a href="https://nmaahc.si.edu" target="_blank">Visit Site →</a>
+                </div>
+                <div class="resource-card">
+                    <h3>Latino Community Foundation</h3>
+                    <p>Empowering Latino communities and preserving cultural heritage.</p>
+                    <a href="https://latinocf.org" target="_blank">Visit Site →</a>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- Jquery  -->
+    <script>
+        $(document).ready(function() {
+            // Hover effect on resource cards
+            $('.resource-card').hover(
+                function() {
+                    $(this).css('box-shadow', '0 4px 12px rgba(0,0,0,0.15)');
+                },
+                function() {
+                    $(this).css('box-shadow', 'none');
+                }
+            );
+
+            // Smooth scroll for anchor links
+            $('a[href^="#"]').on('click', function(e) {
+                var target = $(this.hash);
+                if (target.length) {
+                    e.preventDefault();
+                    $('html, body').animate({
+                        scrollTop: target.offset().top - 80
+                    }, 800);
+                }
+            });
+
+            // Fade in resource cards
+            $('.resource-card').hide().each(function(index) {
+                $(this).delay(50 * index).fadeIn(400);
+            });
+        });
+    </script>
+</body>
+</html>

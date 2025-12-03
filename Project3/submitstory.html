@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Your Story - Legacy of Resilience</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    
+   <link rel="stylesheet" href="Project3.css" />
+
+</head>
+<body>
+    <!-- NAVIGATION -->
+     <nav>
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="stories.html">Stories</a></li>
+            <li><a href="submitstory.html">Share Your Story</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Submit Your Story</h1>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <div class="intro-text">
+            <p>
+                Share your family's journey and honor the resilience of your ancestors. 
+                Your story matters and deserves to be heard.
+            </p>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            <h3>Thank you for sharing your story!</h3>
+            <p>Your submission has been received and is now live!</p>
+            <a href="stories.html">View Your Story</a>
+        </div>
+
+        <form id="storyForm">
+            <div class="form-group">
+                <label for="name">Your Name *</label>
+                <input type="text" id="name" name="name" required>
+                <span class="error-message" id="nameError">Please enter your name</span>
+            </div>
+
+            <div class="form-group">
+                <label for="ancestorName">Ancestor's Name</label>
+                <input type="text" id="ancestorName" name="ancestorName">
+            </div>
+
+            <div class="form-group">
+                <label for="region">Region of Origin *</label>
+                <select id="region" name="region" required>
+                    <option value="">-- Select Region --</option>
+                    <option value="asia">Asia</option>
+                    <option value="europe">Europe</option>
+                    <option value="latin-america">Latin America</option>
+                    <option value="africa">Africa</option>
+                    <option value="middle-east">Middle East</option>
+                    <option value="caribbean">Caribbean</option>
+                    <option value="other">Other</option>
+                </select>
+                <span class="error-message" id="regionError">Please select a region</span>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country of Origin</label>
+                <input type="text" id="country" name="country">
+            </div>
+
+            <div class="form-group">
+                <label for="story">Your Story *</label>
+                <textarea id="story" name="story" placeholder="Share your ancestor's journey, the challenges they faced, the values they passed down, and what their legacy means to you..." required></textarea>
+                <span class="error-message" id="storyError">Please share your story (minimum 50 characters)</span>
+            </div>
+
+            <div class="form-group">
+                <label for="videoLink">Video Link (Optional)</label>
+                <input type="text" id="videoLink" name="videoLink">
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Your Story</button>
+        </form>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2024 Legacy of Resilience | A Networked Care Project</p>
+    </footer>
+
+    <!-- JQUERY FORM VALIDATION -->
+    <script>
+        // FIREBASE CONFIGURATION
+        // TODO: Replace this with your own Firebase config from Firebase Console
+       const firebaseConfig = {
+  apiKey: "AIzaSyDMr7mtdM69OJFaROO6zUYj0YaysibP2E4",
+  authDomain: "project3-legacy.firebaseapp.com",
+  databaseURL: "https://project3-legacy-default-rtdb.firebaseio.com",
+  projectId: "project3-legacy",
+  storageBucket: "project3-legacy.firebasestorage.app",
+  messagingSenderId: "805209453944",
+  appId: "1:805209453944:web:50537951ee7335f4ad448d",
+  measurementId: "G-N3PK0JE775"
+};
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        $(document).ready(function() {
+            // Real-time validation
+            $('#name').on('blur', function() {
+                if ($(this).val().trim() === '') {
+                    $('#nameError').fadeIn();
+                } else {
+                    $('#nameError').fadeOut();
+                }
+            });
+
+            $('#story').on('blur', function() {
+                if ($(this).val().trim().length < 50) {
+                    $('#storyError').fadeIn();
+                } else {
+                    $('#storyError').fadeOut();
+                }
+            });
+
+            // Form submission
+            $('#storyForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                var isValid = true;
+                
+                // Validate all fields
+                if ($('#name').val().trim() === '') {
+                    $('#nameError').fadeIn();
+                    isValid = false;
+                }
+                
+                if ($('#region').val() === '') {
+                    $('#regionError').fadeIn();
+                    isValid = false;
+                }
+                
+                if ($('#story').val().trim().length < 50) {
+                    $('#storyError').fadeIn();
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    // Disable submit button
+                    $('.submit-btn').prop('disabled', true).text('Submitting...');
+                    
+                    // Collect form data
+                    var storyData = {
+                        name: $('#name').val().trim(),
+                        ancestorName: $('#ancestorName').val().trim(),
+                        region: $('#region').val(),
+                        country: $('#country').val().trim(),
+                        story: $('#story').val().trim(),
+                        videoLink: $('#videoLink').val().trim(),
+                        dateSubmitted: new Date().toISOString()
+                    };
+                    
+                    // Save to Firebase
+                    database.ref('stories').push(storyData)
+                        .then(function() {
+                            console.log('Story saved to Firebase successfully!');
+                            
+                            // Hide form and show success message
+                            $('#storyForm').slideUp(400, function() {
+                                $('#successMessage').slideDown(400);
+                                
+                                // Scroll to success message
+                                $('html, body').animate({
+                                    scrollTop: $('#successMessage').offset().top - 100
+                                }, 600);
+                            });
+                        })
+                        .catch(function(error) {
+                            console.error('Error saving story:', error);
+                            alert('Error submitting story. Please try again.');
+                            $('.submit-btn').prop('disabled', false).text('Submit Your Story');
+                        });
+                } else {
+                    // Scroll to first error
+                    var firstError = $('.error-message:visible').first();
+                    if (firstError.length) {
+                        $('html, body').animate({
+                            scrollTop: firstError.offset().top - 100
+                        }, 600);
+                    }
+                }
+            });
+
+            // Clear error messages when user starts typing
+            $('input, select, textarea').on('input change', function() {
+                $(this).siblings('.error-message').fadeOut();
+            });
+        });
+    </script>
+</body>
+</html>
