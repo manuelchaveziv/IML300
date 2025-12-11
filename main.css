@@ -1,0 +1,53 @@
+@font-face {
+  font-family: 'Coolvetica ';
+  src: url('coolvetica rg.otf') format('otf'),
+}
+
+body {
+  font-family: 'Coolvetica', sans-serif;
+}
+
+body {
+  padding: 0px;
+  color: #d8d8d8; 
+}
+
+div {
+  padding: 10px;
+  margin: 10px;
+}
+
+h1, h2, h3 {
+  padding: 10px 0;
+}
+
+p {
+  padding: 20px 0;
+}
+
+a {
+  padding: 5px 0;
+  display: inline-block;
+}
+
+ul {
+  padding-left: 40px;
+}
+
+li {
+  padding: 8px 0;
+}
+
+iframe {
+  margin: 20px 0;
+}
+
+footer {
+  padding: 20px;
+  margin: 20px 0;
+}
+
+body {
+  background-color: black;
+}
+
