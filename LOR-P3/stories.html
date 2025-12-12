@@ -6,7 +6,6 @@
     <title>Stories - Legacy of Resilience</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
-    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 
@@ -14,7 +13,6 @@
     
 </head>
 <body>
-    <!-- NAVIGATION -->
      <nav>
         <ul>
             <li><a href="index.html" class="active">Home</a></li>
@@ -25,24 +23,17 @@
         </ul>
     </nav>
 
-    <!-- HEADER -->
     <header>
         <h1>Stories of Resilience</h1>
     </header>
 
-    <!-- MAIN CONTENT -->
     <main>
 
-        <!-- STORIES GRID -->
         <div class="stories-grid" id="storiesGrid">
-            <!-- Stories loaded dynamically -->
         </div>
     </main>
 
-    <!-- JQUERY INTERACTIVITY -->
     <script>
-        // FIREBASE CONFIGURATION
-        // TODO: Replace this with your own Firebase config from Firebase Console
        const firebaseConfig = {
   apiKey: "AIzaSyDMr7mtdM69OJFaROO6zUYj0YaysibP2E4",
   authDomain: "project3-legacy.firebaseapp.com",
@@ -54,14 +45,12 @@
   measurementId: "G-N3PK0JE775"
 };
 
-        // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
 
         $(document).ready(function() {
             var allStories = [];
             
-            // Function to create story card HTML
             function createStoryCard(story) {
                 var title = story.ancestorName || story.name + "'s Story";
                 var countryDisplay = story.country ? story.country + " → USA" : "Unknown Origin → USA";
@@ -83,7 +72,6 @@
                 `;
             }
             
-            // Load stories from Firebase
             function loadStories() {
                 $('#storiesGrid').html('<p style="text-align: center; color: #666; padding: 40px;">Loading stories...</p>');
                 
@@ -105,7 +93,6 @@
                                 $('#storiesGrid').append(createStoryCard(story));
                             });
                             
-                            // Animate cards
                             $('.story-item').hide().each(function(index) {
                                 $(this).delay(100 * index).fadeIn(600);
                             });
@@ -117,18 +104,14 @@
                     });
             }
             
-            // Initial load
             loadStories();
-            
-            // Filter functionality
+
             $('.filter-btn').click(function() {
                 var filterValue = $(this).data('filter');
-                
-                // Update active button
+
                 $('.filter-btn').removeClass('active');
                 $(this).addClass('active');
-                
-                // Filter stories
+
                 if (filterValue === 'all') {
                     $('.story-item').fadeIn(400);
                 } else {

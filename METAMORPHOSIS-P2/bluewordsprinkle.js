@@ -1,4 +1,3 @@
-// Define the global variables.
 let words = ['Comfort', 'Limbo', 'Faux', 'Drifting', 'Oblivious', 'Unknowing', 'Dead',
   'Ghost', 'Hollow', 'Meaning', 'Searching', 'Lost', 'Content', 'Stagnant', 'Unintentional', 'Unprepared',
   'Hopeless', 'Impatient', 'Doubt', 'Pulling', 'Weight', 'Responsibility', 'Potential',
@@ -8,16 +7,15 @@ let wordObjects = [];
 function setup() {
   describe('Words related to p5.js that fade in and out filling the canvas.');
   textFont('IBM Plex Mono');
-  createCanvas(windowWidth, windowHeight); // Full window size
+  createCanvas(windowWidth, windowHeight); 
   textAlign(CENTER);
   
-  // Create more word objects to fill the canvas
-  let wordCount = floor((width * height) / 15000); // Scales with canvas size
+  let wordCount = floor((width * height) / 15000);
   
   for (let i = 0; i < wordCount; i++) {
     wordObjects.push({
       word: random(words),
-      x: random(50, width - 50), // Margin from edges
+      x: random(50, width - 50), 
       y: random(50, height - 50),
       size: random(16, 48),
       alpha: 0,
@@ -29,17 +27,14 @@ function setup() {
 }
 
 function draw() {
-  background(0); // Black background
+  background(0);
   
-  // Draw and update each word
   for (let obj of wordObjects) {
-    // Handle delay
     if (obj.delay > 0) {
       obj.delay--;
       continue;
     }
     
-    // Fade in or out
     if (obj.fadingIn) {
       obj.alpha += obj.fadeSpeed;
       if (obj.alpha >= 1) {
@@ -51,16 +46,14 @@ function draw() {
       if (obj.alpha <= 0) {
         obj.alpha = 0;
         obj.fadingIn = true;
-        // Change word and position when fully faded
         obj.word = random(words);
         obj.x = random(50, width - 50);
         obj.y = random(50, height - 50);
       }
     }
     
-    // Draw the word with matrix green color
     textSize(obj.size);
-    fill(0, 255, 65, obj.alpha * 255); // Matrix green: RGB(0, 255, 65)
+    fill(0, 255, 65, obj.alpha * 255); 
     text(obj.word, obj.x, obj.y);
   }
 }
@@ -68,10 +61,8 @@ function draw() {
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   
-  // Adjust word count when window is resized
   let newWordCount = floor((width * height) / 15000);
   
-  // Add or remove words based on new size
   if (wordObjects.length < newWordCount) {
     for (let i = wordObjects.length; i < newWordCount; i++) {
       wordObjects.push({

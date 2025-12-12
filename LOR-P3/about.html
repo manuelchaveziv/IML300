@@ -11,7 +11,6 @@
    
 </head>
 <body>
-    <!-- Nav -->
      <nav>
         <ul>
             <li><a href="index.html" class="active">Home</a></li>
@@ -22,12 +21,10 @@
         </ul>
     </nav>
 
-    <!-- HEADER -->
     <header>
         <h1> About</h1>
     </header>
 
-    <!-- MAIN CONTENT -->
     <main>
         <div class="content-section slide-in">
             <div class="mission-box">
@@ -39,10 +36,8 @@
 
     </main>
 
-    <!-- JQUERY INTERACTIVITY -->
     <script>
         $(document).ready(function() {
-            // Slide in sections on scroll
             function checkSlide() {
                 $('.slide-in').each(function() {
                     var slideInAt = $(window).scrollTop() + $(window).height() - 100;

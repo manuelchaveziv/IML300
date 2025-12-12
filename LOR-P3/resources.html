@@ -10,7 +10,6 @@
    
 </head>
 <body>
-    <!-- Nav -->
    <nav>
         <ul>
             <li><a href="index.html" class="active">Home</a></li>
@@ -19,18 +18,15 @@
             <li><a href="resources.html">Resources</a></li>
             <li><a href="about.html">About</a></li>
         </ul>
-    </nav>
+    </nav> 
 
-    <!-- Header -->
     <header>
         <h1>Resources</h1>
         <p>Tools and information for exploring your immigrant heritage</p>
     </header>
 
-    <!-- Content -->
     <main>
 
-        <!-- EDUCATIONAL RESOURCES -->
         <div class="resource-section">
             <h2>Educational Organizations</h2>
             <div class="resource-grid">
@@ -50,7 +46,6 @@
             </div>
         </div>
 
-        <!-- CULTURAL ORGANIZATIONS -->
         <div class="resource-section">
             <h2>Cultural Heritage Organizations</h2>
             <div class="resource-grid">
@@ -70,10 +65,8 @@
         </div>
 
 
-    <!-- Jquery  -->
     <script>
         $(document).ready(function() {
-            // Hover effect on resource cards
             $('.resource-card').hover(
                 function() {
                     $(this).css('box-shadow', '0 4px 12px rgba(0,0,0,0.15)');
@@ -83,7 +76,6 @@
                 }
             );
 
-            // Smooth scroll for anchor links
             $('a[href^="#"]').on('click', function(e) {
                 var target = $(this.hash);
                 if (target.length) {
@@ -94,7 +86,6 @@
                 }
             });
 
-            // Fade in resource cards
             $('.resource-card').hide().each(function(index) {
                 $(this).delay(50 * index).fadeIn(400);
             });

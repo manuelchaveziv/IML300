@@ -6,7 +6,6 @@
     <title>Submit Your Story - Legacy of Resilience</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
-    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
     
@@ -14,7 +13,6 @@
    
 </head>
 <body>
-    <!-- NAVIGATION -->
   <nav>
         <ul>
             <li><a href="index.html" class="active">Home</a></li>
@@ -24,12 +22,10 @@
             <li><a href="about.html">About</a></li>
         </ul>
     </nav>
-    <!-- HEADER -->
     <header>
         <h1>Share Your Story</h1>
     </header>
 
-    <!-- MAIN CONTENT -->
     <main>
         <div class="intro-text">
             <p>
@@ -76,10 +72,7 @@
         </form>
     </main>
 
-    <!-- JQUERY FORM VALIDATION -->
     <script>
-        // FIREBASE CONFIGURATION
-        // TODO: Replace this with your own Firebase config from Firebase Console
          const firebaseConfig = {
          apiKey: "AIzaSyDMr7mtdM69OJFaROO6zUYj0YaysibP2E4",
         authDomain: "project3-legacy.firebaseapp.com",
@@ -92,12 +85,10 @@
 }       ;
 
 
-        // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
 
         $(document).ready(function() {
-            // Real-time validation
             $('#name').on('blur', function() {
                 if ($(this).val().trim() === '') {
                     $('#nameError').fadeIn();
@@ -114,13 +105,11 @@
                 }
             });
 
-            // Form submission
             $('#storyForm').on('submit', function(e) {
                 e.preventDefault();
                 
                 var isValid = true;
                 
-                // Validate required fields
                 if ($('#name').val().trim() === '') {
                     $('#nameError').fadeIn();
                     isValid = false;
@@ -132,10 +121,8 @@
                 }
                 
                 if (isValid) {
-                    // Disable submit button
                     $('.submit-btn').prop('disabled', true).text('Submitting...');
                     
-                    // Collect form data
                     var storyData = {
                         name: $('#name').val().trim(),
                         ancestorName: $('#ancestorName').val().trim(),
@@ -145,16 +132,13 @@
                         dateSubmitted: new Date().toISOString()
                     };
                     
-                    // Save to Firebase
                     database.ref('stories').push(storyData)
                         .then(function() {
                             console.log('Story saved to Firebase successfully!');
                             
-                            // Hide form and show success message
                             $('#storyForm').slideUp(400, function() {
                                 $('#successMessage').slideDown(400);
-                                
-                                // Scroll to success message
+
                                 $('html, body').animate({
                                     scrollTop: $('#successMessage').offset().top - 100
                                 }, 600);
@@ -166,7 +150,6 @@
                             $('.submit-btn').prop('disabled', false).text('Submit Your Story');
                         });
                 } else {
-                    // Scroll to first error
                     var firstError = $('.error-message:visible').first();
                     if (firstError.length) {
                         $('html, body').animate({
@@ -176,7 +159,6 @@
                 }
             });
 
-            // Clear error messages when user starts typing
             $('input, select, textarea').on('input change', function() {
                 $(this).siblings('.error-message').fadeOut();
             });
