@@ -8,26 +8,30 @@ body {
 }
 
 body {
-  padding: 0px;
+  padding: 10px;
   color: #d8d8d8; 
 }
 
 div {
-  padding: 10px;
-  margin: 10px;
+  padding: 2px;
+  margin: 2px;
 }
 
 h1, h2, h3 {
-  padding: 10px 0;
+  padding: 5px 0;
+  font-family: 'Coolvetica', sans-serif;
 }
 
+
 p {
-  padding: 20px 0;
+  padding: 2px 0;
+  font-family: 'Coolvetica', sans-serif;
 }
 
 a {
   padding: 5px 0;
   display: inline-block;
+  color: #8b0814;
 }
 
 ul {
@@ -48,6 +52,6 @@ footer {
 }
 
 body {
-  background-color: black;
+  background-color: #151514;
 }
 
